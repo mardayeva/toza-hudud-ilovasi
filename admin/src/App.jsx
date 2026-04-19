@@ -1,9 +1,14 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./index.css";
 
-const API_BASE =
-  import.meta.env.VITE_API_BASE ||
-  `http://${window.location.hostname}:8000/v1`;
+const API_BASE = (() => {
+  const envBase = import.meta.env.VITE_API_BASE;
+  if (envBase) return envBase;
+  if (typeof window !== "undefined" && window.location.hostname) {
+    return `http://${window.location.hostname}:8000/v1`;
+  }
+  return "http://127.0.0.1:8000/v1";
+})();
 
 const NAV_SUPER = [
   { key: "dashboard", label: "Dashboard", icon: "📊" },
@@ -42,21 +47,31 @@ const DEMO_REGIONS = [
 
 export default function App() {
   const [active, setActive] = useState("dashboard");
-  const [adminToken, setAdminToken] = useState("");
+  const [adminToken, setAdminToken] = useState(() => localStorage.getItem("admin_token") || "");
   const [loginUser, setLoginUser] = useState("admin");
   const [loginPass, setLoginPass] = useState("");
   const [loginError, setLoginError] = useState("");
-  const [adminRole, setAdminRole] = useState("");
-  const [adminTumanId, setAdminTumanId] = useState(0);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [adminRole, setAdminRole] = useState(() => localStorage.getItem("admin_role") || "");
+  const [adminTumanId, setAdminTumanId] = useState(() => Number(localStorage.getItem("admin_tuman_id") || 0));
 
   useEffect(() => {
+    if (adminToken) {
+      localStorage.setItem("admin_token", adminToken);
+      localStorage.setItem("admin_role", adminRole || "");
+      localStorage.setItem("admin_tuman_id", String(adminTumanId || 0));
+      return;
+    }
     localStorage.removeItem("admin_token");
     localStorage.removeItem("admin_role");
     localStorage.removeItem("admin_tuman_id");
-  }, []);
+  }, [adminToken, adminRole, adminTumanId]);
 
-  const doLogin = async () => {
+  const doLogin = async (event) => {
+    event?.preventDefault?.();
+    if (isLoggingIn) return;
     setLoginError("");
+    setIsLoggingIn(true);
     try {
       const res = await fetch(`${API_BASE}/admin/login`, {
         method: "POST",
@@ -79,6 +94,8 @@ export default function App() {
       setAdminToken("");
       setAdminRole("");
       setAdminTumanId(0);
+    } finally {
+      setIsLoggingIn(false);
     }
   };
 
@@ -129,7 +146,7 @@ export default function App() {
               To‘g‘ri login va parol bilan kiring. Backend ishlamasa, xatolik
               ko‘rsatiladi va panel ochilmaydi.
             </p>
-            <div style={{ display: "grid", gap: 12 }}>
+            <form style={{ display: "grid", gap: 12 }} onSubmit={doLogin}>
               <div>
                 <label>Login</label>
                 <input
@@ -148,10 +165,10 @@ export default function App() {
               {loginError && (
                 <div className="notice notice-warn">{loginError}</div>
               )}
-              <button className="primary auth-submit" onClick={doLogin}>
-                Kirish
+              <button className="primary auth-submit" type="submit" disabled={isLoggingIn}>
+                {isLoggingIn ? "Kutilmoqda..." : "Kirish"}
               </button>
-            </div>
+            </form>
           </section>
         </main>
       </div>

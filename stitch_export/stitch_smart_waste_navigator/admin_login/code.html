@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChiqindiNav Admin Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f9f9f9",
+                        "primary-container": "#2e7d32",
+                        "surface-tint": "#1b6d24",
+                        "primary-fixed-dim": "#88d982",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary-container": "#ffedf0",
+                        "tertiary-fixed-dim": "#ffb1c7",
+                        "outline": "#707a6c",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#dadada",
+                        "surface-container-high": "#e8e8e8",
+                        "surface": "#f9f9f9",
+                        "on-secondary-fixed-variant": "#07521d",
+                        "inverse-on-surface": "#f1f1f1",
+                        "tertiary": "#923357",
+                        "on-primary-container": "#cbffc2",
+                        "tertiary-fixed": "#ffd9e2",
+                        "inverse-surface": "#2f3131",
+                        "on-secondary-fixed": "#002107",
+                        "secondary-container": "#abf4ac",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#40493d",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container-low": "#f3f3f3",
+                        "on-background": "#1a1c1c",
+                        "on-tertiary-fixed": "#3f001c",
+                        "secondary": "#286b33",
+                        "primary-fixed": "#a3f69c",
+                        "on-secondary-container": "#2e7238",
+                        "inverse-primary": "#88d982",
+                        "outline-variant": "#bfcaba",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#abf4ac",
+                        "tertiary-container": "#b14b6f",
+                        "secondary-fixed-dim": "#90d792",
+                        "on-primary-fixed": "#002204",
+                        "on-tertiary-fixed-variant": "#7f2448",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "error": "#ba1a1a",
+                        "background": "#f9f9f9",
+                        "on-error": "#ffffff",
+                        "primary": "#0d631b",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#005312"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ambient-shadow {
+            shadow: 0px 12px 32px rgba(26, 28, 28, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col md:flex-row overflow-hidden">
+<!-- Hero/Brand Section -->
+<section class="hidden md:flex md:w-3/5 relative overflow-hidden bg-primary items-center justify-center p-12">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60 mix-blend-overlay" data-alt="Cinematic wide shot of a modern sustainable city with abundant vertical gardens, solar panels, and clean white architectural structures in morning mist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ112wa9utQeSLVasvLKG6THqpQUUngXvjwvN_2Sq3qmj7dZalri__xbwgJvgvg2IuZ5Qqd1E-7RZD8Uq3bDoL_RjNdrYZ8OneA-FwaAwFvQJknYTXZm-WOmwIIqUbb32woW8BUuzI26cdJ3E2HZazo9F5A6ECqEPlZGFUgDH80vD_wYHRlyBWuC8PIbw_VWbbnD_F-SRyPpZHTTsK67WOxo8ohqwYE17sgzEnGjV8LxIVbBm8XogLm5kvJ4B-8ndttloDyz6RiBE"/>
+<div class="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/40 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-xl">
+<h1 class="text-6xl font-black text-on-primary tracking-tighter mb-6 leading-none">
+                Verdant Logic<br/>Systems.
+            </h1>
+<p class="text-on-primary/80 text-xl font-light leading-relaxed max-w-md">
+                Managing the pulse of urban environmental health through intelligent waste logistics and real-time fleet analytics.
+            </p>
+<div class="mt-12 flex gap-8">
+<div class="flex flex-col gap-2">
+<span class="text-3xl font-bold text-on-primary">1.2M</span>
+<span class="text-xs uppercase tracking-widest text-on-primary/60 font-semibold">Tons Managed</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-3xl font-bold text-on-primary">98%</span>
+<span class="text-xs uppercase tracking-widest text-on-primary/60 font-semibold">Route Efficiency</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Login Canvas -->
+<main class="flex-1 flex flex-col items-center justify-center p-8 md:p-16 bg-surface-bright relative">
+<!-- Floating Logo for Mobile -->
+<div class="md:hidden absolute top-8 left-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">eco</span>
+<span class="text-xl font-black text-primary tracking-tighter">ChiqindiNav</span>
+</div>
+<div class="w-full max-w-md space-y-10">
+<header class="space-y-2">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed text-xs font-bold tracking-wide uppercase">
+                    Secure Gateway
+                </div>
+<h2 class="text-4xl font-extrabold text-on-surface tracking-tight">Admin Portal</h2>
+<p class="text-on-surface-variant font-medium leading-relaxed">
+                    Enter your credentials to access the central environmental command system.
+                </p>
+</header>
+<form class="space-y-6">
+<!-- Username Input -->
+<div class="space-y-2">
+<label class="block text-sm font-bold text-on-surface-variant tracking-tight" for="username">Username</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">person</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all duration-300 placeholder:text-outline-variant font-medium text-on-surface" id="username" name="username" placeholder="e.g. admin_curator" type="text"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="block text-sm font-bold text-on-surface-variant tracking-tight" for="password">Password</label>
+<a class="text-xs font-bold text-primary hover:underline decoration-2 underline-offset-4" href="#">Forgot password?</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">lock</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all duration-300 placeholder:text-outline-variant font-medium text-on-surface" id="password" name="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary focus:ring-offset-background bg-surface-container-low cursor-pointer" id="remember" name="remember" type="checkbox"/>
+<label class="ml-3 text-sm font-medium text-on-surface-variant cursor-pointer" for="remember">Stay signed in for 30 days</label>
+</div>
+<!-- Submit Button -->
+<button class="w-full py-4 rounded-xl bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold text-lg shadow-[0px_12px_32px_rgba(13,99,27,0.15)] hover:shadow-[0px_16px_40px_rgba(13,99,27,0.25)] hover:-translate-y-0.5 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 group" type="submit">
+                    Sign In to Dashboard
+                    <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+</form>
+<!-- Secondary Actions -->
+<div class="pt-6 text-center">
+<p class="text-sm text-on-surface-variant font-medium">
+                    New administrator? <a class="text-primary font-bold hover:underline" href="#">Request access</a>
+</p>
+</div>
+</div>
+<!-- Footer -->
+<footer class="absolute bottom-8 w-full px-8 md:px-16 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-semibold text-outline tracking-wider uppercase">
+<div class="flex items-center gap-2">
+<span class="text-primary font-black">Toza Hudud</span>
+<span class="text-outline/30">•</span>
+<span>© 2024</span>
+</div>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#">Security</a>
+<a class="hover:text-primary transition-colors" href="#">Terms</a>
+</div>
+</footer>
+</main>
+<!-- Visual Embellishment: Ambient Blur Blobs -->
+<div class="fixed -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
+<div class="fixed -bottom-24 -left-24 w-96 h-96 bg-secondary/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
+</body></html>

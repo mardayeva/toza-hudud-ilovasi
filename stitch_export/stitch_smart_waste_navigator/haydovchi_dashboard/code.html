@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChiqindiNav - Haydovchi rejimi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#b14b6f",
+                    "secondary-container": "#abf4ac",
+                    "on-surface-variant": "#40493d",
+                    "on-background": "#1a1c1c",
+                    "tertiary-fixed-dim": "#ffb1c7",
+                    "inverse-primary": "#88d982",
+                    "on-primary-container": "#cbffc2",
+                    "surface-container-high": "#e8e8e8",
+                    "surface-bright": "#f9f9f9",
+                    "surface-dim": "#dadada",
+                    "on-primary-fixed": "#002204",
+                    "secondary-fixed": "#abf4ac",
+                    "on-primary": "#ffffff",
+                    "surface": "#f9f9f9",
+                    "on-tertiary-fixed-variant": "#7f2448",
+                    "primary-fixed-dim": "#88d982",
+                    "inverse-surface": "#2f3131",
+                    "on-primary-fixed-variant": "#005312",
+                    "on-secondary-fixed-variant": "#07521d",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#bfcaba",
+                    "secondary": "#286b33",
+                    "tertiary": "#923357",
+                    "on-secondary": "#ffffff",
+                    "primary": "#0d631b",
+                    "surface-container-highest": "#e2e2e2",
+                    "surface-container-low": "#f3f3f3",
+                    "tertiary-fixed": "#ffd9e2",
+                    "surface-container": "#eeeeee",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#90d792",
+                    "on-tertiary-fixed": "#3f001c",
+                    "on-tertiary-container": "#ffedf0",
+                    "on-secondary-fixed": "#002107",
+                    "on-secondary-container": "#2e7238",
+                    "outline": "#707a6c",
+                    "on-surface": "#1a1c1c",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e2e2e2",
+                    "primary-container": "#2e7d32",
+                    "primary-fixed": "#a3f69c",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f1f1f1",
+                    "error": "#ba1a1a",
+                    "background": "#f9f9f9",
+                    "surface-tint": "#1b6d24"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased overflow-hidden h-screen flex flex-col">
+<!-- TopAppBar Shell -->
+<header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md text-green-800 dark:text-green-400 font-['Inter'] font-bold tracking-tight text-lg leading-tight docked full-width top-0 sticky no-border shadow-[0px_12px_32px_rgba(26,28,28,0.06)] z-50">
+<div class="flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-xl font-black tracking-tighter text-green-900 dark:text-green-50">Haydovchi rejimi</h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full shadow-sm">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-xs font-bold uppercase tracking-widest">Online</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a male driver in a clean uniform with a friendly expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpkGaoqYtxFJo59SmPaW4XXfdcU1I4t2MpcP1DfnMIxlgRgjpgrTfz8Ug0jj4et9bc4stXpDKvcwSrfUjFw6BsPXmHq-FBqieVkv_rNR9ogQlP7JfmFmrHmTofvcsHkW44KPHOL3stayzvfoT9iB130qFDzVzyKka5fap660Rbbw9RdEIeGPodo-Q_FzBwsJ8mL8EBmPa-BOkl45RNF-YgMuZg01Illr30BoWDli_w6SgVbZnb-ypHzfIyVj9F9JnwOyQcM_wj3EA"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 relative flex flex-col md:flex-row h-[calc(100vh-72px)]">
+<!-- Map Canvas (Half Screen on Desktop, Full Overlay Logic on Mobile) -->
+<section class="flex-1 relative overflow-hidden">
+<div class="absolute inset-0 bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="detailed navigation map interface with a green GPS route line traversing through city streets and suburban blocks" data-location="Tashkent" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHPu-tiSgE55SBlc3kYIl1H95SzmgexZr3G6UEt_5GfpkyAUYxOtzUO2Kb4pSpZoBTWDBobsympazZ2nI865RA_9q-9JRHoH2VSVnZxxZ87fcFWbTJ5Wus86XmRhAUoy25HpXTovbr0QA3I9vEE0JsUFi7U0wh2EfeMCROH2eDNMetDBnkqXqgyL54VYolnI80EWkkYsYUvREgsFluTAVKf0x1W8RjXYCJkMSdlDF7IgKKWiTHSkgUxU9AOPEudfnf_HiwNJDPcII"/>
+<!-- Map UI Elements -->
+<div class="absolute top-6 left-6 flex flex-col gap-3">
+<div class="p-3 bg-surface-container-lowest rounded-xl shadow-[0px_12px_32px_rgba(26,28,28,0.06)] flex items-center gap-4 border border-outline-variant/15">
+<div class="p-2 bg-primary-container text-on-primary-container rounded-lg">
+<span class="material-symbols-outlined" data-icon="turn_right" style="font-variation-settings: 'FILL' 1;">turn_right</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Keyingi burilish</p>
+<p class="text-lg font-extrabold text-on-surface">350m — Amir Temur shoh ko'chasi</p>
+</div>
+</div>
+</div>
+<!-- Floating GPS Actions -->
+<div class="absolute bottom-10 right-6 flex flex-col gap-4">
+<button class="w-12 h-12 bg-surface-container-lowest rounded-full shadow-lg flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="my_location">my_location</span>
+</button>
+<button class="w-12 h-12 bg-primary-container text-on-primary-container rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Control Center Panel -->
+<aside class="w-full md:w-96 bg-surface shadow-[0px_-8px_24px_rgba(26,28,28,0.04)] md:shadow-none z-10 flex flex-col">
+<!-- Header for Mobile Drag -->
+<div class="md:hidden flex justify-center py-2">
+<div class="w-12 h-1.5 bg-outline-variant/30 rounded-full"></div>
+</div>
+<div class="p-6 space-y-6 flex-1 overflow-y-auto">
+<!-- Status & Toggle -->
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-2xl">
+<div>
+<p class="text-xs font-bold text-outline uppercase tracking-widest">Smena holati</p>
+<p class="text-lg font-extrabold text-on-surface">Ish rejimida</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Current Task Card -->
+<div class="bg-surface-container-lowest p-6 rounded-[24px] shadow-[0px_12px_32px_rgba(26,28,28,0.06)] space-y-4">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-primary/10 text-primary rounded-xl">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-on-surface uppercase tracking-wider">Joriy manzil</h3>
+<p class="text-lg font-black text-on-surface-variant">Navoiy ko'chasi, 24</p>
+</div>
+</div>
+</div>
+<!-- Progress Tracker Component -->
+<div class="flex gap-4 items-stretch py-2">
+<div class="flex flex-col items-center gap-1">
+<div class="w-3 h-3 rounded-full bg-primary ring-4 ring-primary/20"></div>
+<div class="flex-1 w-0.5 border-l-2 border-dashed border-outline-variant"></div>
+<div class="w-3 h-3 rounded-full bg-surface-container-high border-2 border-outline"></div>
+</div>
+<div class="flex flex-col justify-between py-0.5">
+<span class="text-xs font-medium text-primary">Hozirgi nuqta</span>
+<span class="text-xs font-medium text-outline">Keyingi bekat: Alisher Navoiy ko'chasi, 12</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex-1 bg-surface-container-low p-3 rounded-xl">
+<p class="text-[10px] font-bold text-outline uppercase">Massa</p>
+<p class="font-bold text-on-surface">3.2 / 5.0 t</p>
+<div class="w-full bg-primary-fixed h-1.5 rounded-full mt-1 overflow-hidden">
+<div class="bg-primary h-full w-[64%]"></div>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-low p-3 rounded-xl">
+<p class="text-[10px] font-bold text-outline uppercase">Bekatlar</p>
+<p class="font-bold text-on-surface">12 / 18</p>
+<div class="w-full bg-primary-fixed h-1.5 rounded-full mt-1 overflow-hidden">
+<div class="bg-primary h-full w-[66%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-5 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition-all flex items-center justify-center gap-3">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                    Yuklash bajarildi
+                </button>
+</div>
+</aside>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl text-green-700 dark:text-green-400 font-['Inter'] text-[11px] font-semibold uppercase tracking-[0.05em] fixed bottom-0 w-full rounded-t-[32px] tonal-shift bg-slate-50/50 dark:bg-slate-800/50 shadow-[0px_-8px_24px_rgba(26,28,28,0.04)] fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-3 pb-8 md:hidden">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-2 active:scale-90 transition-transform duration-150 hover:text-green-600 dark:hover:text-green-300 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home_storage">home_storage</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-green-50 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-2xl px-3 py-2 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="map" style="font-variation-settings: 'FILL' 1;">map</span>
+<span>Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-2 active:scale-90 transition-transform duration-150 hover:text-green-600 dark:hover:text-green-300 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+<span>Report</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-2 active:scale-90 transition-transform duration-150 hover:text-green-600 dark:hover:text-green-300 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span>Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-2 active:scale-90 transition-transform duration-150 hover:text-green-600 dark:hover:text-green-300 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span>Profile</span>
+</a>
+</nav>
+</body></html>

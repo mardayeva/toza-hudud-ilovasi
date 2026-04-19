@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fleet and Driver Management - Toza Hudud</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f9f9f9",
+                    "primary-container": "#2e7d32",
+                    "surface-tint": "#1b6d24",
+                    "primary-fixed-dim": "#88d982",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#eeeeee",
+                    "on-tertiary-container": "#ffedf0",
+                    "tertiary-fixed-dim": "#ffb1c7",
+                    "outline": "#707a6c",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#dadada",
+                    "surface-container-high": "#e8e8e8",
+                    "surface": "#f9f9f9",
+                    "on-secondary-fixed-variant": "#07521d",
+                    "inverse-on-surface": "#f1f1f1",
+                    "tertiary": "#923357",
+                    "on-primary-container": "#cbffc2",
+                    "tertiary-fixed": "#ffd9e2",
+                    "inverse-surface": "#2f3131",
+                    "on-secondary-fixed": "#002107",
+                    "secondary-container": "#abf4ac",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#40493d",
+                    "surface-container-highest": "#e2e2e2",
+                    "surface-variant": "#e2e2e2",
+                    "surface-container-low": "#f3f3f3",
+                    "on-background": "#1a1c1c",
+                    "on-tertiary-fixed": "#3f001c",
+                    "secondary": "#286b33",
+                    "primary-fixed": "#a3f69c",
+                    "on-secondary-container": "#2e7238",
+                    "inverse-primary": "#88d982",
+                    "outline-variant": "#bfcaba",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed": "#abf4ac",
+                    "tertiary-container": "#b14b6f",
+                    "secondary-fixed-dim": "#90d792",
+                    "on-primary-fixed": "#002204",
+                    "on-tertiary-fixed-variant": "#7f2448",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#1a1c1c",
+                    "error": "#ba1a1a",
+                    "background": "#f9f9f9",
+                    "on-error": "#ffffff",
+                    "primary": "#0d631b",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#005312"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface-bright text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 flex flex-col bg-zinc-50 dark:bg-zinc-950 p-4 border-r border-zinc-100/50 dark:border-zinc-900/50 z-50">
+<div class="flex items-center gap-3 px-4 py-6 mb-4">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-container flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+</div>
+<div>
+<h1 class="text-lg font-bold text-emerald-900 dark:text-emerald-100 tracking-tight leading-none">Verdant Logic</h1>
+<p class="text-[10px] font-medium text-zinc-500 uppercase tracking-widest mt-1">Environmental Admin</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 h-full">
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-600 hover:bg-zinc-200/50 hover:translate-x-1 transition-all duration-300 rounded-lg font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-600 hover:bg-zinc-200/50 hover:translate-x-1 transition-all duration-300 rounded-lg font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="distance">distance</span>
+<span>Map Tracking</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-600 hover:bg-zinc-200/50 hover:translate-x-1 transition-all duration-300 rounded-lg font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="route">route</span>
+<span>Waste Routes</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-600 hover:bg-zinc-200/50 hover:translate-x-1 transition-all duration-300 rounded-lg font-medium text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 rounded-lg shadow-sm font-bold text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="local_shipping" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+<span>Fleet Management</span>
+</a>
+<div class="mt-auto pt-6 border-t border-zinc-100 dark:border-zinc-800">
+<button class="w-full flex items-center justify-center gap-2 py-3 bg-primary text-on-primary rounded-xl font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+<span>Export Report</span>
+</button>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar Shell -->
+<header class="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-lg flex justify-between items-center px-8 h-16 w-full border-b border-zinc-100 dark:border-zinc-800 sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<div class="relative group">
+<input class="w-80 bg-surface-container-low border-none rounded-full px-11 py-2 text-sm focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all" placeholder="Search drivers or vehicles..." type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary text-xl" data-icon="search">search</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full text-zinc-500 hover:bg-zinc-50 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full text-zinc-500 hover:bg-zinc-50 transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-zinc-100 mx-2"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface tracking-tight leading-none">Admin Station</p>
+<p class="text-[10px] text-zinc-500 font-medium mt-0.5">Central Hub</p>
+</div>
+<img class="w-9 h-9 rounded-full object-cover border-2 border-primary-fixed group-hover:scale-105 transition-transform" data-alt="Administrator profile headshot with a friendly smile, clean studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWXyV_5nKPx6lm4j82h4kGtXqsGSq0coLI-7_-PolUd5kDjvxAFKqcgv-Pn6wSmTllccVQsTT2xfB36irvyPfCDv8iopmGbhuZUem3Yo7JVgvseBMtdnDUHyTapK1GMDxV4Wt8ihcwUubYoew43j97jZNyV3H8vszxgzJIUaK7zVdn5Zn1gFevYyjcU_187_oytX53kBAt-Ydq7aLsMr-Fzu9NAq8h6vzUAOvl7CH9Bi46Gn1aMF9hDvIswSJ24ERI0p3uLESJSzk"/>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<section class="p-8 max-w-7xl mx-auto space-y-8">
+<!-- Header Section -->
+<div class="flex items-end justify-between">
+<div>
+<h2 class="text-3xl font-black text-emerald-900 tracking-tighter">Fleet Logistics</h2>
+<p class="text-on-surface-variant mt-2 text-lg font-medium">Manage your active personnel and waste transport infrastructure.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-3 bg-surface-container-high text-on-secondary-container rounded-xl font-bold hover:bg-surface-container-highest transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+                        Filter
+                    </button>
+<button class="px-6 py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-xl font-bold shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+                        New Driver
+                    </button>
+</div>
+</div>
+<!-- Dashboard Stats Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-[1.5rem] shadow-[0px_12px_32px_rgba(26,28,28,0.04)] flex flex-col justify-between h-40">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="groups">groups</span>
+<div>
+<p class="text-label-sm font-bold text-zinc-400 uppercase tracking-widest mb-1">Total Drivers</p>
+<p class="text-3xl font-black text-on-surface">124</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-[1.5rem] shadow-[0px_12px_32px_rgba(26,28,28,0.04)] flex flex-col justify-between h-40">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="bolt">bolt</span>
+<div>
+<p class="text-label-sm font-bold text-zinc-400 uppercase tracking-widest mb-1">Active Now</p>
+<p class="text-3xl font-black text-on-surface">98 <span class="text-sm font-bold text-primary-container ml-2">82%</span></p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-[1.5rem] shadow-[0px_12px_32px_rgba(26,28,28,0.04)] flex flex-col justify-between h-40">
+<span class="material-symbols-outlined text-tertiary-container text-3xl" data-icon="minor_crash">minor_crash</span>
+<div>
+<p class="text-label-sm font-bold text-zinc-400 uppercase tracking-widest mb-1">On Maintenance</p>
+<p class="text-3xl font-black text-on-surface">6</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-[1.5rem] shadow-[0px_12px_32px_rgba(26,28,28,0.04)] flex flex-col justify-between h-40">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="local_gas_station">local_gas_station</span>
+<div>
+<p class="text-label-sm font-bold text-zinc-400 uppercase tracking-widest mb-1">Fuel Efficiency</p>
+<p class="text-3xl font-black text-on-surface">14.2 <span class="text-xs font-bold text-zinc-400">km/L</span></p>
+</div>
+</div>
+</div>
+<!-- Driver Management Table Container -->
+<div class="bg-surface-container-lowest rounded-[2rem] shadow-[0px_12px_32px_rgba(26,28,28,0.04)] overflow-hidden">
+<div class="px-8 py-6 flex items-center justify-between border-b border-zinc-50">
+<h3 class="text-xl font-bold tracking-tight">Personnel Directory</h3>
+<div class="flex items-center gap-2 text-zinc-500 text-sm font-medium">
+<span class="material-symbols-outlined text-base" data-icon="update">update</span>
+                        Last updated 2 mins ago
+                    </div>
+</div>
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-zinc-50/50">
+<th class="px-8 py-5 text-label-sm font-bold text-zinc-400 uppercase tracking-widest">Driver</th>
+<th class="px-6 py-5 text-label-sm font-bold text-zinc-400 uppercase tracking-widest">Vehicle ID</th>
+<th class="px-6 py-5 text-label-sm font-bold text-zinc-400 uppercase tracking-widest">Status</th>
+<th class="px-6 py-5 text-label-sm font-bold text-zinc-400 uppercase tracking-widest">Contact Information</th>
+<th class="px-8 py-5 text-label-sm font-bold text-zinc-400 uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-zinc-50">
+<!-- Driver 1 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-2xl object-cover ring-2 ring-white group-hover:scale-110 transition-transform" data-alt="Close-up portrait of a professional driver with a beard, neutral background, soft daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANONVB0wS2r_lyuijouXwbyyLQ-TxTuLMM-rJuaIrxbxEAmXfMMCVdb4BNWK9MOjXZV-pD7UIZqhf3g8UBlz5kDwf6E7oh35JTpBe22MlWZ7W1oVUcRxWx0SooBWxeosO7LNPtVIDuclh7DN5oPDu_aBF3rOjvkgH0W85-mi7XT7_DQijfOFef8E2UC_PKWIf2pZVpBH5JVqAoJoAFK3wk0DoeGE69jUbXFij6it6wJD6LOanNiE67nwaOJRiH9XomQobaBELKIN8"/>
+<div>
+<p class="font-bold text-on-surface">Rustam Karimov</p>
+<p class="text-xs text-zinc-500 font-medium">Senior Collector</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="bg-zinc-100 text-zinc-700 px-3 py-1.5 rounded-lg text-sm font-black tracking-tight">UZ-77A-90</span>
+</td>
+<td class="px-6 py-5">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                                    Online
+                                </div>
+</td>
+<td class="px-6 py-5">
+<div class="space-y-0.5">
+<p class="text-sm font-medium text-on-surface">+998 90 123 45 67</p>
+<p class="text-xs text-zinc-400">r.karimov@tozahudud.uz</p>
+</div>
+</td>
+<td class="px-8 py-5 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 rounded-xl text-zinc-400 hover:text-primary hover:bg-white transition-all active:scale-90" title="Edit Profile">
+<span class="material-symbols-outlined text-xl" data-icon="edit_square">edit_square</span>
+</button>
+<button class="p-2 rounded-xl text-zinc-400 hover:text-primary hover:bg-white transition-all active:scale-90" title="Assign Route">
+<span class="material-symbols-outlined text-xl" data-icon="alt_route">alt_route</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Driver 2 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-2xl object-cover ring-2 ring-white group-hover:scale-110 transition-transform" data-alt="Portrait of a female heavy vehicle operator looking forward, confident expression, outdoor parking lot background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGjRui1B1F2zz3wuBWqxCiCmc5ndLH2x_posG-24CYjc7FoQSPjpVu0v9NJnW17bQw_FQTiUt7J2KTzDzwB0PhewQ0yFDhzRaPJ-zF9M0sv4Nk-16P62UycVr2XekoFBUR5RdNn6aY8z-QpO__-Rby7dK_5QHx1ss7s5riHnK6THUmxhaYp5A1TdcNqgqUw9on-ujJZC9B7UE0XTsa4JrkL3ztkpU0Ga2ML1QcHrQVsdjBqKi6m1m9FSBCTEfgI-ASUNMkWfCUCSY"/>
+<div>
+<p class="font-bold text-on-surface">Dildora Usmanova</p>
+<p class="text-xs text-zinc-500 font-medium">Logistics Specialist</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="bg-zinc-100 text-zinc-700 px-3 py-1.5 rounded-lg text-sm font-black tracking-tight">UZ-12X-45</span>
+</td>
+<td class="px-6 py-5">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 text-zinc-400 text-xs font-bold">
+<span class="w-2 h-2 rounded-full bg-zinc-400"></span>
+                                    Offline
+                                </div>
+</td>
+<td class="px-6 py-5">
+<div class="space-y-0.5">
+<p class="text-sm font-medium text-on-surface">+998 94 987 65 43</p>
+<p class="text-xs text-zinc-400">d.usmanova@tozahudud.uz</p>
+</div>
+</td>
+<td class="px-8 py-5 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 rounded-xl text-zinc-400 hover:text-primary hover:bg-white transition-all active:scale-90" title="Edit Profile">
+<span class="material-symbols-outlined text-xl" data-icon="edit_square">edit_square</span>
+</button>
+<button class="p-2 rounded-xl text-zinc-400 hover:text-primary hover:bg-white transition-all active:scale-90" title="Assign Route">
+<span class="material-symbols-outlined text-xl" data-icon="alt_route">alt_route</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Driver 3 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-2xl object-cover ring-2 ring-white group-hover:scale-110 transition-transform" data-alt="Close-up profile photo of a male driver in uniform, smiling warmly, brightly lit indoor office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-D3ddoZLlkOKRvq7e6WwiVkxjbpVK0eFZK_079GMYDEQxdkmz6HceE99qyyI0ch5IEhX7lDroWnviSmz4C0b6bZZYPlu8YSS4IG0TxQAiUGbk2Fag_Dn8CW-dOwMfcuQDo1pl8wrPhWjB_4IF-5PgrXm2lqmcSHexB0TmgQpobkmj7kmflXbN1mYrQS9Luvxlqu0BrucnOBOQUrFeOhlAAWOgxkPDcxOyYSF6UK_UkCqOutv3CSLEG5tuSz0F_D8wwlHrtK2exLk"/>
+<div>
+<p class="font-bold text-on-surface">Sardor Alimov</p>
+<p class="text-xs text-zinc-500 font-medium">Fleet Supervisor</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="bg-zinc-100 text-zinc-700 px-3 py-1.5 rounded-lg text-sm font-black tracking-tight">UZ-01Z-77</span>
+</td>
+<td class="px-6 py-5">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                                    Online
+                                </div>
+</td>
+<td class="px-6 py-5">
+<div class="space-y-0.5">
+<p class="text-sm font-medium text-on-surface">+998 97 111 22 33</p>
+<p class="text-xs text-zinc-400">s.alimov@tozahudud.uz</p>
+</div>
+</td>
+<td class="px-8 py-5 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 rounded-xl text-zinc-400 hover:text-primary hover:bg-white transition-all active:scale-90" title="Edit Profile">
+<span class="material-symbols-outlined text-xl" data-icon="edit_square">edit_square</span>
+</button>
+<button class="p-2 rounded-xl text-zinc-400 hover:text-primary hover:bg-white transition-all active:scale-90" title="Assign Route">
+<span class="material-symbols-outlined text-xl" data-icon="alt_route">alt_route</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Driver 4 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-2xl object-cover ring-2 ring-white group-hover:scale-110 transition-transform" data-alt="Portrait of a mature male transit worker, professional gaze, blue collar shirt, soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCir2gFT-FL1mhx2_fhxQIYwnJousDIr0WnEaj6TShDxLNwE3Fib7K8bBPnphT8bv8YZNdSPfYGsSROR7z551A6J5cW_s3OH1oAXIoioZnUsRDASahDOactcSZcRct1pFYcrBu_qNpOp_16X-vVLo7_O7dZGxbibZ01cni0jqvzt5Yt422bsqhG-WbYleL3IitD6IC4x6au8syjFiR_AOR1KGfiZp7L1qok9lD_Cy5aRZhbPZfFtxdWUT2SOW5EJS6qoaYjlZdlSaw"/>
+<div>
+<p class="font-bold text-on-surface">Jasur Mahmudov</p>
+<p class="text-xs text-zinc-500 font-medium">Night Shift Lead</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="bg-zinc-100 text-zinc-700 px-3 py-1.5 rounded-lg text-sm font-black tracking-tight">UZ-88M-02</span>
+</td>
+<td class="px-6 py-5">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 text-zinc-400 text-xs font-bold">
+<span class="w-2 h-2 rounded-full bg-zinc-400"></span>
+                                    Offline
+                                </div>
+</td>
+<td class="px-6 py-5">
+<div class="space-y-0.5">
+<p class="text-sm font-medium text-on-surface">+998 91 555 44 22</p>
+<p class="text-xs text-zinc-400">j.mahmudov@tozahudud.uz</p>
+</div>
+</td>
+<td class="px-8 py-5 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 rounded-xl text-zinc-400 hover:text-primary hover:bg-white transition-all active:scale-90" title="Edit Profile">
+<span class="material-symbols-outlined text-xl" data-icon="edit_square">edit_square</span>
+</button>
+<button class="p-2 rounded-xl text-zinc-400 hover:text-primary hover:bg-white transition-all active:scale-90" title="Assign Route">
+<span class="material-symbols-outlined text-xl" data-icon="alt_route">alt_route</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="px-8 py-6 bg-zinc-50/30 flex items-center justify-between">
+<p class="text-xs font-bold text-zinc-400 uppercase tracking-widest">Showing 4 of 124 Personnel</p>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-white shadow-sm border border-zinc-100 text-zinc-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary text-on-primary shadow-lg shadow-primary/20 font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-white shadow-sm border border-zinc-100 text-zinc-600 hover:text-primary transition-colors font-bold">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-white shadow-sm border border-zinc-100 text-zinc-600 hover:text-primary transition-colors font-bold">3</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-white shadow-sm border border-zinc-100 text-zinc-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Contextual Fleet Insights -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Vehicle Capacity Chart Placeholder -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0px_12px_32px_rgba(26,28,28,0.04)] relative overflow-hidden group">
+<div class="relative z-10">
+<h4 class="text-lg font-black text-on-surface tracking-tight mb-6">Real-time Vehicle Load</h4>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-sm font-bold text-on-surface-variant">Waste Truck #402</span>
+<span class="text-sm font-black text-primary">85%</span>
+</div>
+<div class="h-3 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%] rounded-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-sm font-bold text-on-surface-variant">Waste Truck #109</span>
+<span class="text-sm font-black text-primary">42%</span>
+</div>
+<div class="h-3 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[42%] rounded-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-sm font-bold text-on-surface-variant">Recycle unit #022</span>
+<span class="text-sm font-black text-tertiary-container">96%</span>
+</div>
+<div class="h-3 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container w-[96%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute -right-12 -bottom-12 opacity-[0.03] pointer-events-none group-hover:scale-110 transition-transform duration-700">
+<span class="material-symbols-outlined text-[15rem]" data-icon="local_shipping">local_shipping</span>
+</div>
+</div>
+<!-- Driver Alerts & Log -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0px_12px_32px_rgba(26,28,28,0.04)]">
+<h4 class="text-lg font-black text-on-surface tracking-tight mb-6">Fleet Activity Log</h4>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="login">login</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Rustam Karimov signed in</p>
+<p class="text-xs text-zinc-400 mt-1">Vehicle UZ-77A-90 • 08:15 AM</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-xl bg-tertiary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary" data-icon="warning">warning</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Fuel level low: Truck #109</p>
+<p class="text-xs text-zinc-400 mt-1">Reported by Auto-system • 09:42 AM</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Route completed: Yunusabad Sector</p>
+<p class="text-xs text-zinc-400 mt-1">Sardor Alimov • 10:20 AM</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Fixed Action Button (FAB) - Suppression logic: rendered for dashboard context -->
+<button class="fixed bottom-10 right-10 w-16 h-16 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-2xl shadow-2xl shadow-primary/40 flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40 group">
+<span class="material-symbols-outlined text-3xl transition-transform group-hover:rotate-90" data-icon="add">add</span>
+</button>
+</main>
+</body></html>

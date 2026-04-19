@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChiqindiNav Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f9f9f9",
+                        "primary-container": "#2e7d32",
+                        "surface-tint": "#1b6d24",
+                        "primary-fixed-dim": "#88d982",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary-container": "#ffedf0",
+                        "tertiary-fixed-dim": "#ffb1c7",
+                        "outline": "#707a6c",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#dadada",
+                        "surface-container-high": "#e8e8e8",
+                        "surface": "#f9f9f9",
+                        "on-secondary-fixed-variant": "#07521d",
+                        "inverse-on-surface": "#f1f1f1",
+                        "tertiary": "#923357",
+                        "on-primary-container": "#cbffc2",
+                        "tertiary-fixed": "#ffd9e2",
+                        "inverse-surface": "#2f3131",
+                        "on-secondary-fixed": "#002107",
+                        "secondary-container": "#abf4ac",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#40493d",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container-low": "#f3f3f3",
+                        "on-background": "#1a1c1c",
+                        "on-tertiary-fixed": "#3f001c",
+                        "secondary": "#286b33",
+                        "primary-fixed": "#a3f69c",
+                        "on-secondary-container": "#2e7238",
+                        "inverse-primary": "#88d982",
+                        "outline-variant": "#bfcaba",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#abf4ac",
+                        "tertiary-container": "#b14b6f",
+                        "secondary-fixed-dim": "#90d792",
+                        "on-primary-fixed": "#002204",
+                        "on-tertiary-fixed-variant": "#7f2448",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "error": "#ba1a1a",
+                        "background": "#f9f9f9",
+                        "on-error": "#ffffff",
+                        "primary": "#0d631b",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#005312"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9f9; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); }
+        .ambient-shadow { shadow: 0px 12px 32px rgba(26, 28, 28, 0.06); }
+        .sidebar-item-active { background-color: #ffffff; color: #0d631b; font-weight: 700; border-radius: 0.5rem; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body class="text-on-surface bg-surface antialiased overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 flex flex-col bg-zinc-50 dark:bg-zinc-950 p-4 gap-2 z-50">
+<div class="mb-8 px-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" data-icon="eco" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<div>
+<h1 class="text-lg font-bold text-emerald-900 tracking-tight">Verdant Logic</h1>
+<p class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Environmental Admin</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1.5 flex-1">
+<!-- Dashboard Active -->
+<a class="flex items-center gap-3 p-3 bg-white text-emerald-700 rounded-lg shadow-sm font-bold transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-inter text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-zinc-600 hover:bg-zinc-200/50 rounded-lg transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="distance">distance</span>
+<span class="font-inter text-sm font-medium">Map Tracking</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-zinc-600 hover:bg-zinc-200/50 rounded-lg transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="route">route</span>
+<span class="font-inter text-sm font-medium">Waste Routes</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-zinc-600 hover:bg-zinc-200/50 rounded-lg transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-inter text-sm font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-zinc-600 hover:bg-zinc-200/50 rounded-lg transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+<span class="font-inter text-sm font-medium">Fleet Management</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-zinc-200/50">
+<button class="w-full bg-primary text-on-primary py-3 px-4 rounded-xl font-bold text-sm shadow-lg shadow-primary/20 flex items-center justify-center gap-2 hover:opacity-90 transition-opacity active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="ios_share">ios_share</span>
+                Export Report
+            </button>
+</div>
+</aside>
+<main class="ml-64 flex-1 min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-white/80 backdrop-blur-lg flex justify-between items-center px-8 h-16 w-full sticky top-0 z-40 shadow-[0px_12px_32px_rgba(26,28,28,0.04)]">
+<div class="flex items-center gap-4">
+<h2 class="text-xl font-black text-emerald-900 tracking-tighter">Toza Hudud</h2>
+</div>
+<div class="flex-1 max-w-md mx-8">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary" data-icon="search">search</span>
+<input class="w-full h-11 pl-12 pr-4 rounded-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all text-sm" placeholder="Search data points, drivers or districts..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<button class="p-2 text-zinc-500 hover:bg-zinc-50 rounded-full transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-tertiary rounded-full"></span>
+</button>
+<button class="p-2 text-zinc-500 hover:bg-zinc-50 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-zinc-100"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">Admin Panel</p>
+<p class="text-[10px] text-zinc-500">Super Administrator</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border-2 border-white shadow-sm group-hover:scale-105 transition-transform">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="close-up portrait of professional male administrator in formal attire with clean professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfADkyci6kFvxD1FE9OP4s7rPEgzcwPqVxdtoRDdVR6xGpE511fm8Q9ecY-XfhuWAYlSGT3LScUKEFztS2WzSFGJF48SHQek909M-DIj2XSfCY0dYXaIduN5rgCe29P3MbHojEs1jYy1x2_KA75kcoEME0sEzA2axbiiST7EGWA9TBKifjf9l9U8WYwJJTHrEL17ljvpw6M3T-EWyNVK10S8FUosE-brmhqJCZiTDghbiuOqsmeMPH1lAPxztAjv0P7DNQqo_ySMs"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-8 space-y-8">
+<!-- Hero Stats Bento -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_12px_32px_rgba(26,28,28,0.06)] group hover:translate-y-[-4px] transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary-container rounded-lg text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="delete_sweep">delete_sweep</span>
+</div>
+<span class="text-xs font-bold text-primary flex items-center gap-1 bg-primary-fixed px-2 py-1 rounded-full">
+                            +12.4% <span class="material-symbols-outlined text-[12px]" data-icon="trending_up">trending_up</span>
+</span>
+</div>
+<p class="text-zinc-500 text-xs font-medium uppercase tracking-wider mb-1">Total Waste Collected</p>
+<h3 class="text-2xl font-black text-on-surface">42,850 <span class="text-sm font-normal text-zinc-400">Tons</span></h3>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_12px_32px_rgba(26,28,28,0.06)] group hover:translate-y-[-4px] transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-primary-fixed rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+</div>
+<span class="text-xs font-bold text-primary-container">Active</span>
+</div>
+<p class="text-zinc-500 text-xs font-medium uppercase tracking-wider mb-1">Active Trucks</p>
+<h3 class="text-2xl font-black text-on-surface">156 <span class="text-sm font-normal text-zinc-400">Units</span></h3>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_12px_32px_rgba(26,28,28,0.06)] group hover:translate-y-[-4px] transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-tertiary-fixed rounded-lg text-tertiary">
+<span class="material-symbols-outlined" data-icon="report_problem">report_problem</span>
+</div>
+<span class="text-xs font-bold text-tertiary">Critical</span>
+</div>
+<p class="text-zinc-500 text-xs font-medium uppercase tracking-wider mb-1">New Complaints</p>
+<h3 class="text-2xl font-black text-on-surface">24 <span class="text-sm font-normal text-zinc-400">Unresolved</span></h3>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_12px_32px_rgba(26,28,28,0.06)] group hover:translate-y-[-4px] transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-surface-container-high rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+</div>
+<span class="text-xs font-bold text-zinc-500">Coverage</span>
+</div>
+<p class="text-zinc-500 text-xs font-medium uppercase tracking-wider mb-1">Total Districts</p>
+<h3 class="text-2xl font-black text-on-surface">12 <span class="text-sm font-normal text-zinc-400">Regions</span></h3>
+</div>
+</section>
+<!-- Main Analytics Area -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Large Line Chart Container -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-8 rounded-2xl shadow-[0px_12px_32px_rgba(26,28,28,0.04)]">
+<div class="flex justify-between items-center mb-10">
+<div>
+<h4 class="text-lg font-bold text-on-surface">Waste Collection Trends</h4>
+<p class="text-sm text-zinc-500">Monthly statistical analysis across all districts</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 text-xs font-bold bg-surface-container-low text-zinc-600 rounded-lg hover:bg-zinc-200 transition-colors">Weekly</button>
+<button class="px-4 py-2 text-xs font-bold bg-primary text-on-primary rounded-lg shadow-md shadow-primary/20">Monthly</button>
+</div>
+</div>
+<!-- SVG Chart Mockup -->
+<div class="w-full h-72 relative">
+<svg class="w-full h-full" viewbox="0 0 800 300">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#0d631b" stop-opacity="0.1"></stop>
+<stop offset="100%" stop-color="#0d631b" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,250 L100,220 L200,240 L300,180 L400,200 L500,120 L600,150 L700,90 L800,110" fill="none" stroke="#0d631b" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
+<path d="M0,250 L100,220 L200,240 L300,180 L400,200 L500,120 L600,150 L700,90 L800,110 L800,300 L0,300 Z" fill="url(#chartGradient)"></path>
+<!-- Grid Lines -->
+<line stroke="#eeeeee" stroke-width="1" x1="0" x2="800" y1="50" y2="50"></line>
+<line stroke="#eeeeee" stroke-width="1" x1="0" x2="800" y1="125" y2="125"></line>
+<line stroke="#eeeeee" stroke-width="1" x1="0" x2="800" y1="200" y2="200"></line>
+<line stroke="#eeeeee" stroke-width="1" x1="0" x2="800" y1="275" y2="275"></line>
+</svg>
+<!-- Tooltip Mockup -->
+<div class="absolute top-[80px] left-[680px] bg-on-surface text-white p-3 rounded-lg text-[10px] shadow-xl">
+<p class="font-bold mb-1">District: Yunusabad</p>
+<p class="text-white/70">Collected: 842 Tons</p>
+<p class="text-white/70">Efficiency: 98%</p>
+</div>
+</div>
+<div class="flex justify-between mt-6 px-2">
+<span class="text-[10px] font-bold text-zinc-400">JAN</span>
+<span class="text-[10px] font-bold text-zinc-400">FEB</span>
+<span class="text-[10px] font-bold text-zinc-400">MAR</span>
+<span class="text-[10px] font-bold text-zinc-400">APR</span>
+<span class="text-[10px] font-bold text-zinc-400">MAY</span>
+<span class="text-[10px] font-bold text-zinc-400">JUN</span>
+<span class="text-[10px] font-bold text-zinc-400">JUL</span>
+<span class="text-[10px] font-bold text-zinc-400">AUG</span>
+</div>
+</div>
+<!-- Real-time GPS Tracking Sidebar -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-[0px_12px_32px_rgba(26,28,28,0.04)] overflow-hidden flex flex-col">
+<div class="p-6">
+<div class="flex justify-between items-center mb-2">
+<h4 class="text-lg font-bold text-on-surface">Real-time GPS</h4>
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+</div>
+<p class="text-xs text-zinc-500 mb-6">Monitoring 156 vehicles in transit</p>
+<!-- Mini Map Canvas -->
+<div class="aspect-square w-full bg-surface-container-low rounded-xl relative overflow-hidden group">
+<img alt="city map" class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700" data-location="Tashkent" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwHiRTTg6hBhRC0oSkvYEad-SNDD63gFKyO7M2gdVzXl7XbGLbOd4R-xOhajWaAp4p_UcJ7LXmgIiBqx8AhEqDS9_1C0XjZ-0_seG7da0Q1n1O3pfxzVztKO6LjsAwt-ZsBRV84dMGxSNZRVbUSdPyycVvy7qbECI0jC4VLUsNzQYIjSGGH-8hYL49Jz95MS2BkLt2DFm3KKitYjKVwrRCA8lwylcwgbq_QQ78D2pbWK6951kY1pQ9chW_uYtlABQiKUJ8q0fLWfI"/>
+<!-- GPS Pins -->
+<div class="absolute top-1/4 left-1/3 w-4 h-4 bg-primary rounded-full border-2 border-white shadow-lg shadow-primary/40 animate-bounce"></div>
+<div class="absolute top-1/2 left-2/3 w-4 h-4 bg-primary rounded-full border-2 border-white shadow-lg shadow-primary/40 animate-bounce delay-75"></div>
+<div class="absolute top-3/4 left-1/2 w-4 h-4 bg-tertiary rounded-full border-2 border-white shadow-lg shadow-tertiary/40"></div>
+<div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur p-3 rounded-lg shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-[10px] font-bold text-on-surface">TRUCK-9402 Moving to Chorsu</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-auto p-6 bg-surface-container-low/50">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="near_me">near_me</span>
+<div>
+<p class="text-xs font-bold">Yunusabad Center</p>
+<p class="text-[10px] text-zinc-500">4 trucks active</p>
+</div>
+</div>
+<span class="text-[10px] font-bold text-zinc-400">2 min ago</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-lg" data-icon="warning">warning</span>
+<div>
+<p class="text-xs font-bold">Chilanzar Block 4</p>
+<p class="text-[10px] text-zinc-500">Route delayed</p>
+</div>
+</div>
+<span class="text-[10px] font-bold text-zinc-400">14 min ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Table Section -->
+<section class="bg-surface-container-lowest rounded-2xl shadow-[0px_12px_32px_rgba(26,28,28,0.04)] overflow-hidden">
+<div class="p-8 flex justify-between items-center">
+<div>
+<h4 class="text-lg font-bold text-on-surface">Recent Activities</h4>
+<p class="text-sm text-zinc-500">Live operational logs across all logistics channels</p>
+</div>
+<button class="flex items-center gap-2 text-sm font-bold text-primary hover:underline">
+                        View full logs <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-8 py-4 text-[11px] font-bold uppercase tracking-widest text-zinc-500">Event Type</th>
+<th class="px-8 py-4 text-[11px] font-bold uppercase tracking-widest text-zinc-500">Driver / Subject</th>
+<th class="px-8 py-4 text-[11px] font-bold uppercase tracking-widest text-zinc-500">Location</th>
+<th class="px-8 py-4 text-[11px] font-bold uppercase tracking-widest text-zinc-500">Status</th>
+<th class="px-8 py-4 text-[11px] font-bold uppercase tracking-widest text-zinc-500">Timestamp</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-zinc-50">
+<tr class="hover:bg-zinc-50/50 transition-colors cursor-pointer group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+</div>
+<span class="text-sm font-bold">Route Completed</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-2">
+<img alt="Driver" class="w-6 h-6 rounded-full object-cover" data-alt="headshot of smiling male truck driver in professional uniform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlW8ca0DJ5C3-3FPp4lNYL7U4ph9CI8IpM-gZMInLVoeq1ezGRvTnS-Y9auj8TpLDAj3sAHwqty4Uoe7Wxbu_Cu-JsP-vTb3xbqSXpYRQjsJrRvuk7_rN4z9j0o-FE-Q6l_WRKs7xW1H46L_LueevS2D4En64TYaBRDiKd59bu7S-c0Y_pzcUM78jWgFAwNh2v2HFiPQN-drQF3RaCQTRgcQ3DFW6fU9mEr3k8XskucY520lJEJrxXzZ2_8P67O1gM0v0J9t_-A4A"/>
+<span class="text-sm">Alisher K.</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<span class="text-sm text-zinc-600">Mirzo Ulugbek District</span>
+</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-black rounded-full">SUCCESS</span>
+</td>
+<td class="px-8 py-5 text-sm text-zinc-400">12:44 PM</td>
+</tr>
+<tr class="hover:bg-zinc-50/50 transition-colors cursor-pointer group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="error">error</span>
+</div>
+<span class="text-sm font-bold">Truck Maintenance</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-2">
+<span class="text-sm font-medium">IVECO-882 (T01)</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<span class="text-sm text-zinc-600">Central Depot B</span>
+</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 bg-tertiary-fixed-dim text-on-tertiary-fixed-variant text-[10px] font-black rounded-full">URGENT</span>
+</td>
+<td class="px-8 py-5 text-sm text-zinc-400">11:30 AM</td>
+</tr>
+<tr class="hover:bg-zinc-50/50 transition-colors cursor-pointer group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="local_shipping">local_shipping</span>
+</div>
+<span class="text-sm font-bold">New Route Start</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-2">
+<img alt="Driver" class="w-6 h-6 rounded-full object-cover" data-alt="professional portrait of middle-aged driver against neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY9b1u8BywPlRPcpYsdQbgRk49E_9ByXXbYqrhKxGGk4y3zyoyWHzmmtUjYuYkGgoFbkTdvOldiRcrUXKIER4ED9A5K-cuZoU2IL7w2uHj88hc9mcywvnRPb8Tye0kcyFq3p-0c77hdR0oEZjl5xSgZxBs3vXpfXrZWqqELmi96h8eJHlKGKUnMnhVnd6QfKVOVIIqOrePq125XROiwyPBT45WkTEh4S76h4440jIHOjjnsOMAWvMjZyZJ-IrQvrIeTUPefT5uS3I"/>
+<span class="text-sm">Jamshid R.</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<span class="text-sm text-zinc-600">Sergeli District</span>
+</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 bg-primary-fixed text-on-primary-fixed-variant text-[10px] font-black rounded-full">ON-GOING</span>
+</td>
+<td class="px-8 py-5 text-sm text-zinc-400">10:15 AM</td>
+</tr>
+<tr class="hover:bg-zinc-50/50 transition-colors cursor-pointer group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-zinc-100 text-zinc-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="description">description</span>
+</div>
+<span class="text-sm font-bold">Report Generated</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-2">
+<span class="text-sm">System Process</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<span class="text-sm text-zinc-600">Cloud Server 1</span>
+</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 bg-surface-container text-zinc-500 text-[10px] font-black rounded-full">SYSTEM</span>
+</td>
+<td class="px-8 py-5 text-sm text-zinc-400">09:00 AM</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+</body></html>

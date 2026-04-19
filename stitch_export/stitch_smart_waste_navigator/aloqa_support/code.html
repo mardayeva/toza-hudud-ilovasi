@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yordam va Aloqa - ChiqindiNav</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#b14b6f",
+                    "secondary-container": "#abf4ac",
+                    "on-surface-variant": "#40493d",
+                    "on-background": "#1a1c1c",
+                    "tertiary-fixed-dim": "#ffb1c7",
+                    "inverse-primary": "#88d982",
+                    "on-primary-container": "#cbffc2",
+                    "surface-container-high": "#e8e8e8",
+                    "surface-bright": "#f9f9f9",
+                    "surface-dim": "#dadada",
+                    "on-primary-fixed": "#002204",
+                    "secondary-fixed": "#abf4ac",
+                    "on-primary": "#ffffff",
+                    "surface": "#f9f9f9",
+                    "on-tertiary-fixed-variant": "#7f2448",
+                    "primary-fixed-dim": "#88d982",
+                    "inverse-surface": "#2f3131",
+                    "on-primary-fixed-variant": "#005312",
+                    "on-secondary-fixed-variant": "#07521d",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#bfcaba",
+                    "secondary": "#286b33",
+                    "tertiary": "#923357",
+                    "on-secondary": "#ffffff",
+                    "primary": "#0d631b",
+                    "surface-container-highest": "#e2e2e2",
+                    "surface-container-low": "#f3f3f3",
+                    "tertiary-fixed": "#ffd9e2",
+                    "surface-container": "#eeeeee",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#90d792",
+                    "on-tertiary-fixed": "#3f001c",
+                    "on-tertiary-container": "#ffedf0",
+                    "on-secondary-fixed": "#002107",
+                    "on-secondary-container": "#2e7238",
+                    "outline": "#707a6c",
+                    "on-surface": "#1a1c1c",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e2e2e2",
+                    "primary-container": "#2e7d32",
+                    "primary-fixed": "#a3f69c",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f1f1f1",
+                    "error": "#ba1a1a",
+                    "background": "#f9f9f9",
+                    "surface-tint": "#1b6d24"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-[0px_12px_32px_rgba(26,28,28,0.06)] px-6 py-4 flex items-center justify-between w-full">
+<div class="flex items-center gap-4">
+<button class="text-green-800 active:scale-95 duration-200 hover:bg-slate-50 p-2 rounded-full">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-xl font-black tracking-tighter text-green-900 font-['Inter']">Yordam va Aloqa</h1>
+</div>
+<div class="text-green-900 font-black tracking-tighter text-xl">ChiqindiNav</div>
+</header>
+<main class="max-w-4xl mx-auto px-6 py-8">
+<!-- Hero Section with Asymmetric Layout -->
+<section class="mb-12 flex flex-col md:flex-row gap-8 items-center">
+<div class="md:w-3/5">
+<h2 class="text-4xl font-extrabold tracking-tight text-on-surface mb-4 leading-tight">Biz bilan bog'lanish har doim oson.</h2>
+<p class="text-lg text-on-surface-variant font-body leading-relaxed mb-6">Savollaringiz bormi yoki chiqindi yig'ish tizimida muammoga duch keldingizmi? Bizning jamoamiz sizga yordam berishga tayyor.</p>
+<div class="flex flex-wrap gap-4">
+<!-- Direct Call Button -->
+<a class="flex items-center gap-3 bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl shadow-[0px_12px_32px_rgba(26,28,28,0.06)] active:scale-95 transition-transform duration-200" href="tel:+998712000000">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">call</span>
+<span class="font-bold tracking-wide">Qo'ng'iroq qilish</span>
+</a>
+<!-- Telegram Bot Link -->
+<a class="flex items-center gap-3 bg-surface-container-high text-on-secondary-container px-8 py-4 rounded-xl active:scale-95 transition-transform duration-200" href="https://t.me/chiqindinav_bot">
+<span class="material-symbols-outlined">send</span>
+<span class="font-bold tracking-wide">Telegram Bot</span>
+</a>
+</div>
+</div>
+<div class="md:w-2/5 w-full aspect-square rounded-[32px] overflow-hidden shadow-2xl relative rotate-3 hover:rotate-0 transition-transform duration-500">
+<img alt="Support" class="w-full h-full object-cover" data-alt="Friendly support representative with a headset smiling in a bright modern office with plants in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXQAlIwgN7QKPcpDOTqprmoe0vAV6uaT6pz_BGwwlsrqxNBMSBqFd0rySvM3VzuthPnwg-tv1j1rB5wXS-RhqcJjEoCyiO73HwlT1kU8_KHfJoi8rkspDIY1OiDWqXmC_t3CkdEHxgc4s-vM6mWY_Z5IFL8pVvq9hh3Tv_uzWufyZDy8z_d3kHeiI_ruHth54J0_B30Gzwzr1sWuEgnYoHP41ffGX2d5Qf8ckKbnedw_ZmgljYN20OZEvGsf4pP5ZWujOHViiPepE"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+</div>
+</section>
+<!-- Common Support Cards (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+<div class="bg-surface-container-lowest p-8 rounded-[32px] shadow-[0px_12px_32px_rgba(26,28,28,0.06)] flex flex-col gap-4">
+<div class="w-12 h-12 bg-primary-fixed rounded-2xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mail</span>
+</div>
+<h3 class="text-xl font-bold">Elektron pochta</h3>
+<p class="text-on-surface-variant text-sm">Rasmiy murojaatlar uchun: info@chiqindinav.uz</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-[32px] shadow-[0px_12px_32px_rgba(26,28,28,0.06)] flex flex-col gap-4">
+<div class="w-12 h-12 bg-secondary-container rounded-2xl flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">schedule</span>
+</div>
+<h3 class="text-xl font-bold">Ish vaqti</h3>
+<p class="text-on-surface-variant text-sm">Dushanba - Juma<br/>09:00 dan 18:00 gacha</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-[32px] shadow-[0px_12px_32px_rgba(26,28,28,0.06)] flex flex-col gap-4">
+<div class="w-12 h-12 bg-tertiary-fixed rounded-2xl flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<h3 class="text-xl font-bold">Manzil</h3>
+<p class="text-on-surface-variant text-sm">Toshkent sh., Yunusobod tumani, Bog'ishamol ko'chasi 12</p>
+</div>
+</div>
+<!-- FAQ Section -->
+<section>
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-3xl font-black tracking-tight text-on-surface">Ko'p beriladigan savollar</h2>
+<span class="bg-primary-fixed text-on-primary-fixed px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">FAQ</span>
+</div>
+<div class="space-y-4">
+<!-- FAQ Item 1 -->
+<div class="bg-surface-container-lowest rounded-[24px] overflow-hidden transition-all duration-300 hover:shadow-md">
+<button class="w-full text-left px-8 py-6 flex items-center justify-between group">
+<span class="text-lg font-bold text-on-surface group-hover:text-primary transition-colors">Chiqindi olib ketish vaqtini qanday bilsam bo'ladi?</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-transform">expand_more</span>
+</button>
+<div class="px-8 pb-6 text-on-surface-variant leading-relaxed">
+                        Ilovaning asosiy sahifasidagi "Xarita" bo'limida sizning hududingizga mas'ul bo'lgan mashina yo'nalishi va taxminiy kelish vaqtini real vaqt rejimida kuzatishingiz mumkin.
+                    </div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="bg-surface-container-low rounded-[24px] overflow-hidden transition-all duration-300">
+<button class="w-full text-left px-8 py-6 flex items-center justify-between group">
+<span class="text-lg font-bold text-on-surface">To'lovlarni qanday amalga oshiraman?</span>
+<span class="material-symbols-outlined text-outline-variant">expand_more</span>
+</button>
+</div>
+<!-- FAQ Item 3 -->
+<div class="bg-surface-container-low rounded-[24px] overflow-hidden transition-all duration-300">
+<button class="w-full text-left px-8 py-6 flex items-center justify-between group">
+<span class="text-lg font-bold text-on-surface">Agar chiqindi o'z vaqtida olib ketilmasa nima qilish kerak?</span>
+<span class="material-symbols-outlined text-outline-variant">expand_more</span>
+</button>
+</div>
+<!-- FAQ Item 4 -->
+<div class="bg-surface-container-low rounded-[24px] overflow-hidden transition-all duration-300">
+<button class="w-full text-left px-8 py-6 flex items-center justify-between group">
+<span class="text-lg font-bold text-on-surface">Yangi maxsus idish (konteyner) buyurtma qilsa bo'ladimi?</span>
+<span class="material-symbols-outlined text-outline-variant">expand_more</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Newsletter / Feedback -->
+<section class="mt-16 bg-primary-container text-on-primary-container p-10 rounded-[40px] relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="text-2xl font-bold mb-2">Fikringiz biz uchun muhim</h3>
+<p class="opacity-80 mb-6 max-w-md">Xizmat sifatini oshirish bo'yicha takliflaringiz bo'lsa, bizga yozib qoldiring.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<input class="flex-grow bg-white/10 border-none rounded-2xl px-6 py-4 placeholder:text-white/50 text-white focus:ring-2 focus:ring-white/30" placeholder="Xabaringiz..." type="text"/>
+<button class="bg-white text-primary font-bold px-8 py-4 rounded-2xl active:scale-95 transition-transform">Yuborish</button>
+</div>
+</div>
+<!-- Decorative circle -->
+<div class="absolute -bottom-20 -right-20 w-64 h-64 bg-primary rounded-full blur-3xl opacity-50"></div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-3 pb-8 bg-white/90 backdrop-blur-xl rounded-t-[32px] shadow-[0px_-8px_24px_rgba(26,28,28,0.04)]">
+<button class="flex flex-col items-center justify-center text-slate-400 px-3 py-2 hover:text-green-600 transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined">home_storage</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-[0.05em] mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 px-3 py-2 hover:text-green-600 transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined">map</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-[0.05em] mt-1">Map</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 px-3 py-2 hover:text-green-600 transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-[0.05em] mt-1">Report</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 px-3 py-2 hover:text-green-600 transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-[0.05em] mt-1">Alerts</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-green-50 text-green-800 rounded-2xl px-3 py-2 transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-[0.05em] mt-1">Profile</span>
+</button>
+</nav>
+</body></html>

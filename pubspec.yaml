@@ -1,0 +1,55 @@
+name: chiqindi_nav
+description: Surxondaryo viloyati chiqindi yig'ish tizimi
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  # State management
+  provider: ^6.1.1
+  # HTTP requests
+  http: ^1.2.0
+  # Local storage
+  shared_preferences: ^2.2.2
+  # Push notifications
+  flutter_local_notifications: ^17.0.0
+  # Real-time (WebSocket)
+  web_socket_channel: ^2.4.0
+  # Location
+  geolocator: ^11.0.0
+  # Maps
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.0
+  # URL launcher (MyGov)
+  url_launcher: ^6.2.5
+  # JSON
+  json_annotation: ^4.8.1
+  # Date formatting
+  intl: ^0.20.2
+  # Icons
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  build_runner: ^2.4.8
+  json_serializable: ^6.7.1
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/logo.jpg"
+  remove_alpha_ios: true
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/

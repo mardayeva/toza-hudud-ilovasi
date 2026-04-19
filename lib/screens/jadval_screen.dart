@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -8,7 +8,9 @@ import 'package:latlong2/latlong.dart';
 import '../l10n/app_strings.dart';
 import '../models/models.dart';
 import '../services/api_service.dart';
+import '../services/auth_service.dart';
 import '../theme.dart';
+import 'auth_screen.dart';
 import 'app_drawer.dart';
 import 'shikoyat_screen.dart';
 
@@ -39,6 +41,7 @@ class _JadvalScreenState extends State<JadvalScreen> {
   final _jadvalService = JadvalService();
   late final MashinaKuzatishService _mashinaService;
   late final JadvalRealtimeService _realtimeService;
+  late final NotificationRealtimeService _notificationService;
 
   @override
   void initState() {
@@ -54,6 +57,7 @@ class _JadvalScreenState extends State<JadvalScreen> {
       },
     );
     _realtimeService = JadvalRealtimeService(onUpdate: _reload);
+    _notificationService = NotificationRealtimeService(onUpdate: _reload);
     _reload();
   }
 
@@ -85,6 +89,10 @@ class _JadvalScreenState extends State<JadvalScreen> {
       tumanId: widget.tumanId,
       mahallaNomi: widget.mahallaNomi,
     );
+    _notificationService.boshlash(
+      tumanId: widget.tumanId,
+      mahallaNomi: widget.mahallaNomi,
+    );
 
     _timeoutTimer?.cancel();
     _timeoutTimer = Timer(const Duration(seconds: 8), () {
@@ -103,6 +111,7 @@ class _JadvalScreenState extends State<JadvalScreen> {
   void dispose() {
     _mashinaService.toxtatish();
     _realtimeService.toxtatish();
+    _notificationService.toxtatish();
     _timeoutTimer?.cancel();
     super.dispose();
   }
@@ -139,9 +148,9 @@ class _JadvalScreenState extends State<JadvalScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text(
-              'Chiqindi yig\'ish jadvali',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+            Text(
+              s.scheduleTitle,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
             ),
             Text(
               '${widget.mahallaNomi} ${s.neighborhoodSuffix}',
@@ -157,6 +166,19 @@ class _JadvalScreenState extends State<JadvalScreen> {
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: _reload,
+          ),
+          IconButton(
+            icon: const Icon(Icons.logout),
+            tooltip: 'Hududni almashtirish',
+            onPressed: () async {
+              await AuthService().logout();
+              if (!context.mounted) return;
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (_) => const AuthScreen()),
+                (route) => false,
+              );
+            },
           ),
           IconButton(
             icon: const Icon(Icons.report_outlined),
@@ -320,7 +342,7 @@ class _HeroKarta extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'BUGUNGI HOLAT',
+                s.todayStatus.toUpperCase(),
                 style: TextStyle(
                   fontSize: 11,
                   fontWeight: FontWeight.w800,
@@ -329,9 +351,9 @@ class _HeroKarta extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              const Text(
-                'Mashina yo\'lda',
-                style: TextStyle(
+              Text(
+                s.truckOnRoad,
+                style: const TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.w800,
                   color: Colors.white,
@@ -346,7 +368,7 @@ class _HeroKarta extends StatelessWidget {
                   borderRadius: BorderRadius.circular(999),
                 ),
                 child: Text(
-                  '№ 752 ABC - ${jadval.boshlanish} da yetib keladi',
+                  '№ 752 ABC — ${jadval.boshlanish} ${s.arrivesAtTime}',
                   style: const TextStyle(
                     fontSize: 13,
                     color: Colors.white,
@@ -638,9 +660,9 @@ class _KuzatishTab extends StatelessWidget {
               children: [
                 _SectionLabel(text: s.routeStops),
                 const SizedBox(height: 8),
-                _MarshurutTile(nom: "Navoiy ko'chasi", holat: 'done'),
-                _MarshurutTile(nom: '$mahallaNomi (siz)', holat: 'next'),
-                _MarshurutTile(nom: "Do'stlik mahallasi", holat: 'wait'),
+                _MarshurutTile(nom: s.routeDemoStart, holat: 'done'),
+                _MarshurutTile(nom: '$mahallaNomi (${s.routeDemoYou})', holat: 'next'),
+                _MarshurutTile(nom: s.routeDemoNext, holat: 'wait'),
               ],
             ),
           ),
@@ -872,3 +894,6 @@ class _SectionLabel extends StatelessWidget {
     );
   }
 }
+
+
+

@@ -33,22 +33,10 @@ class Shikoyat(Base):
     mahalla: Mapped[str] = mapped_column(String(120))
     xil: Mapped[str] = mapped_column(String(50))
     izoh: Mapped[str] = mapped_column(String(500))
+    javob: Mapped[str | None] = mapped_column(String(600), nullable=True)
     lat: Mapped[float | None] = mapped_column(Float, nullable=True)
     lon: Mapped[float | None] = mapped_column(Float, nullable=True)
     holat: Mapped[str] = mapped_column(String(30), default="yuborildi")
-    created_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True), server_default=func.now()
-    )
-
-
-class AppUser(Base):
-    __tablename__ = "app_user"
-
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    username: Mapped[str] = mapped_column(String(50), unique=True, index=True)
-    full_name: Mapped[str] = mapped_column(String(120))
-    password_hash: Mapped[str] = mapped_column(String(128))
-    token: Mapped[str | None] = mapped_column(String(128), nullable=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )

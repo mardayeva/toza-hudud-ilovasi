@@ -48,6 +48,7 @@ class ShikoyatCreate(BaseModel):
 
 class ShikoyatOut(ShikoyatCreate):
     id: int
+    javob: str | None = None
     holat: str
     created_at: datetime
 
@@ -103,23 +104,6 @@ class AdminUserOut(BaseModel):
         from_attributes = True
 
 
-class UserRegisterIn(BaseModel):
-    username: str
-    full_name: str
-    password: str
-
-
-class UserLoginIn(BaseModel):
-    username: str
-    password: str
-
-
-class UserAuthOut(BaseModel):
-    token: str
-    user_id: int
-    full_name: str
-
-
 class DriverCreate(BaseModel):
     full_name: str
     login: str
@@ -155,3 +139,7 @@ class DriverAuthOut(BaseModel):
     vehicle_number: str
     tuman_id: int | None = None
     mahalla: str | None = None
+
+
+class ShikoyatReplyIn(BaseModel):
+    javob: str

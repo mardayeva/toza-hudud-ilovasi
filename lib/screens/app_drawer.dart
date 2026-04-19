@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'driver_login_screen.dart';
 import 'contact_screen.dart';
+import 'auth_screen.dart';
 import '../l10n/app_strings.dart';
 import '../l10n/locale_controller.dart';
+import '../services/auth_service.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -106,6 +108,20 @@ class AppDrawer extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (_) => const ContactScreen()),
               ),
+            ),
+            const SizedBox(height: 8),
+            _DrawerTile(
+              icon: Icons.logout,
+              title: s.changeArea,
+              onTap: () async {
+                await AuthService().logout();
+                if (!context.mounted) return;
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (_) => const AuthScreen()),
+                  (route) => false,
+                );
+              },
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
@@ -9,7 +10,7 @@ import '../models/models.dart';
 
 // ==================== API CONFIG ====================
 class ApiConfig {
-  static const bool demoMode = true;
+  static const bool demoMode = bool.fromEnvironment('DEMO_MODE', defaultValue: true);
 
   static const String devServerIp = '192.168.100.150';
 
@@ -36,9 +37,7 @@ class JadvalService {
     required String mahallaNomi,
     int? driverId,
   }) async {
-    if (ApiConfig.demoMode) {
-      return _demoJadval(mahallaNomi);
-    }
+    if (ApiConfig.demoMode) return _demoJadval(mahallaNomi);
 
     final String url = driverId != null
         ? '${ApiConfig.baseUrl}/jadval?driver_id=$driverId'
@@ -50,7 +49,7 @@ class JadvalService {
             Uri.parse(url),
             headers: {'Content-Type': 'application/json'},
           )
-          .timeout(const Duration(seconds: 6));
+          .timeout(const Duration(seconds: 3));
 
       if (res.statusCode == 200) {
         final decoded = json.decode(res.body);
@@ -64,7 +63,9 @@ class JadvalService {
           }
         }
       }
-    } catch (_) {}
+    } catch (_) {
+      // fallback below
+    }
 
     return _demoJadval(mahallaNomi);
   }
@@ -171,15 +172,21 @@ class MashinaKuzatishService {
 
   void _demoBoshlash() {
     _demoTimer?.cancel();
-    _demoTimer = Timer(const Duration(seconds: 2), () {
-      onUpdate(const MashinaJoylashuv(
+    var eta = 25;
+    _demoTimer = Timer.periodic(const Duration(seconds: 4), (timer) {
+      onUpdate(MashinaJoylashuv(
         lat: 37.224,
         lon: 67.278,
         driverIsm: 'Alisher Karimov',
         mashinaRaqami: '60 A 123 BA',
-        etaMinut: 25,
+        etaMinut: eta,
         joriyMahalla: "Bog'ishamol",
       ));
+      if (eta <= 0) {
+        timer.cancel();
+      } else {
+        eta -= 5;
+      }
     });
   }
 
@@ -194,6 +201,7 @@ class MashinaKuzatishService {
 // ==================== JADVAL REALTIME (WebSocket) ====================
 class JadvalRealtimeService {
   WebSocketChannel? _channel;
+  Timer? _demoTimer;
   final VoidCallback onUpdate;
 
   JadvalRealtimeService({required this.onUpdate});
@@ -201,7 +209,11 @@ class JadvalRealtimeService {
   void boshlash({required int tumanId, required String mahallaNomi}) {
     try {
       if (_channel != null) return;
-      if (ApiConfig.demoMode) return;
+      if (ApiConfig.demoMode) {
+        _demoTimer?.cancel();
+        _demoTimer = Timer.periodic(const Duration(seconds: 12), (_) => onUpdate());
+        return;
+      }
       _channel = WebSocketChannel.connect(
         Uri.parse(
           '${ApiConfig.wsUrl}/jadval?tuman_id=$tumanId'
@@ -216,6 +228,45 @@ class JadvalRealtimeService {
   }
 
   void toxtatish() {
+    _demoTimer?.cancel();
+    _demoTimer = null;
+    _channel?.sink.close();
+    _channel = null;
+  }
+}
+
+// ==================== BILDIRISHNOMA REALTIME (WebSocket) ====================
+class NotificationRealtimeService {
+  WebSocketChannel? _channel;
+  Timer? _demoTimer;
+  final VoidCallback onUpdate;
+
+  NotificationRealtimeService({required this.onUpdate});
+
+  void boshlash({required int tumanId, required String mahallaNomi}) {
+    try {
+      if (_channel != null) return;
+      if (ApiConfig.demoMode) {
+        _demoTimer?.cancel();
+        _demoTimer = Timer.periodic(const Duration(seconds: 15), (_) => onUpdate());
+        return;
+      }
+      _channel = WebSocketChannel.connect(
+        Uri.parse(
+          '${ApiConfig.wsUrl}/notifications?tuman_id=$tumanId'
+          '&mahalla=${Uri.encodeComponent(mahallaNomi)}',
+        ),
+      );
+      _channel!.stream.listen(
+        (_) => onUpdate(),
+        onError: (_) {},
+      );
+    } catch (_) {}
+  }
+
+  void toxtatish() {
+    _demoTimer?.cancel();
+    _demoTimer = null;
     _channel?.sink.close();
     _channel = null;
   }
@@ -246,10 +297,10 @@ class ShikoyatService {
               'lon': shikoyat.lon,
             }),
           )
-          .timeout(const Duration(seconds: 8));
+          .timeout(const Duration(seconds: 3));
       return res.statusCode == 201;
     } catch (_) {
-      return true;
+      return false;
     }
   }
 }
@@ -263,9 +314,7 @@ class BildirishnomaService {
     required int tumanId,
     required String mahallaNomi,
   }) async {
-    if (ApiConfig.demoMode) {
-      return _demoNotifications();
-    }
+    if (ApiConfig.demoMode) return _demoNotifications();
 
     try {
       final res = await _client
@@ -275,7 +324,7 @@ class BildirishnomaService {
             ),
             headers: {'Content-Type': 'application/json'},
           )
-          .timeout(const Duration(seconds: 6));
+          .timeout(const Duration(seconds: 3));
 
       if (res.statusCode != 200) {
         return _demoNotifications();
@@ -288,7 +337,9 @@ class BildirishnomaService {
             .map((e) => _parseNotif(Map<String, dynamic>.from(e)))
             .toList();
       }
-    } catch (_) {}
+    } catch (_) {
+      // fallback below
+    }
 
     return _demoNotifications();
   }
@@ -376,8 +427,7 @@ class MyGovService {
       }
       return false;
     } catch (_) {
-      _accessToken = 'demo_token_12345';
-      return true;
+      return false;
     }
   }
 

@@ -6,6 +6,7 @@ from app.db.models import Notification
 from app.db.session import get_db
 from app.schemas.schemas import NotificationCreate, NotificationOut
 from app.core.auth import require_admin_token, AdminCtx
+from app.ws.notification_manager import notification_manager
 
 router = APIRouter(tags=["notifications"])
 
@@ -53,6 +54,20 @@ async def notifications_create(
     db.add(item)
     await db.commit()
     await db.refresh(item)
+    await notification_manager.broadcast(
+        item.tuman_id,
+        item.mahalla,
+        {
+            "event": "notification_created",
+            "id": item.id,
+            "tuman_id": item.tuman_id,
+            "mahalla": item.mahalla,
+            "title": item.title,
+            "body": item.body,
+            "level": item.level,
+            "created_at": item.created_at.isoformat() if item.created_at else None,
+        },
+    )
     return item
 
 

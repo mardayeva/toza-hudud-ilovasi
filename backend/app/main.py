@@ -7,7 +7,6 @@ from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 from app.db.base import Base
 from app.db.session import engine
-from app.core.config import settings
 from app.ws.routes_ws import router as ws_router
 
 app = FastAPI(title=settings.app_name)
@@ -25,19 +24,6 @@ app.add_middleware(
 async def on_startup():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
-        # lightweight migrations
-        try:
-            await conn.execute(text("ALTER TABLE app_user ADD COLUMN username VARCHAR(50)"))
-        except SQLAlchemyError:
-            pass
-        try:
-            await conn.execute(text("UPDATE app_user SET username = COALESCE(username, full_name) WHERE username IS NULL"))
-        except SQLAlchemyError:
-            pass
-        try:
-            await conn.execute(text("CREATE UNIQUE INDEX IF NOT EXISTS app_user_username_uq ON app_user(username)"))
-        except SQLAlchemyError:
-            pass
         # driver new columns for sqlite/postgres
         for stmt in [
             "ALTER TABLE jadval ADD COLUMN driver_id INTEGER",
@@ -45,6 +31,7 @@ async def on_startup():
             "ALTER TABLE driver ADD COLUMN tuman_id INTEGER",
             "ALTER TABLE driver ADD COLUMN mahalla VARCHAR(120)",
             "ALTER TABLE shikoyat ADD COLUMN tuman_id INTEGER",
+            "ALTER TABLE shikoyat ADD COLUMN javob VARCHAR(600)",
         ]:
             try:
                 await conn.execute(text(stmt))

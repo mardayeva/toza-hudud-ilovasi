@@ -27,18 +27,11 @@ class _ShikoyatScreenState extends State<ShikoyatScreen> {
   bool _yuborilmoqda = false;
 
   Map<ShikoyatXil, String> _xillar(AppStrings s) => {
-        ShikoyatXil.mashinaKelmadi: s.locale.languageCode == 'ru'
-            ? 'Mashina kelmadi'
-            : 'Mashina kelmadi',
-        ShikoyatXil.chiqindiQoldirildi: s.locale.languageCode == 'ru'
-            ? 'Chiqindi qoldirildi'
-            : 'Chiqindi qoldirildi',
-        ShikoyatXil.jadvalNotoGri: s.locale.languageCode == 'ru'
-            ? "Jadval noto'g'ri"
-            : "Jadval noto'g'ri",
-        ShikoyatXil.maxsusChiqindi:
-            s.locale.languageCode == 'ru' ? 'Maxsus chiqindi' : 'Maxsus chiqindi',
-        ShikoyatXil.boshqa: s.locale.languageCode == 'ru' ? 'Boshqa' : 'Boshqa',
+        ShikoyatXil.mashinaKelmadi: s.mashinaKelmadi,
+        ShikoyatXil.chiqindiQoldirildi: s.chiqindiQoldirildi,
+        ShikoyatXil.jadvalNotoGri: s.jadvalNotoGri,
+        ShikoyatXil.maxsusChiqindi: s.maxsusChiqindi,
+        ShikoyatXil.boshqa: s.boshqa,
       };
 
   Future<void> _yuborish() async {
@@ -118,7 +111,7 @@ class _ShikoyatScreenState extends State<ShikoyatScreen> {
     final xillar = _xillar(s);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ChiqindiNav'),
+        title: Text(s.appTitle),
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 12, 20, 28),
@@ -134,7 +127,7 @@ class _ShikoyatScreenState extends State<ShikoyatScreen> {
           ),
           const SizedBox(height: 10),
           Text(
-            'Atrof-muhit tozaligiga o\'z hissangizni qo\'shing. Muammo haqida xabar bering va biz uni tezkorlik bilan bartaraf etamiz.',
+            s.complaintIntro,
             style: TextStyle(
               fontSize: 17,
               height: 1.45,
@@ -163,9 +156,9 @@ class _ShikoyatScreenState extends State<ShikoyatScreen> {
                       child: const Icon(Icons.edit_note, color: AppTheme.primary),
                     ),
                     const SizedBox(width: 14),
-                    const Text(
-                      'Muammo tavsifi',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
+                    Text(
+                      s.complaintDescription,
+                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
                     ),
                   ],
                 ),
@@ -200,13 +193,13 @@ class _ShikoyatScreenState extends State<ShikoyatScreen> {
                   child: const Icon(Icons.camera_alt, color: AppTheme.primary, size: 34),
                 ),
                 const SizedBox(height: 18),
-                const Text(
-                  'Rasm yuklash',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
+                Text(
+                  s.addPhoto,
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  'MAKSIMAL 5 TA RASM',
+                  s.maxPhotoNotice,
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w800,
@@ -246,7 +239,7 @@ class _ShikoyatScreenState extends State<ShikoyatScreen> {
                   left: 34,
                   bottom: 44,
                   child: Text(
-                    'Joylashuv',
+                    s.location,
                     style: TextStyle(
                       color: Colors.grey.shade900,
                       fontSize: 18,
@@ -267,7 +260,7 @@ class _ShikoyatScreenState extends State<ShikoyatScreen> {
                         borderRadius: BorderRadius.circular(14),
                       ),
                     ),
-                    child: const Text('Avtomatik aniqlash'),
+                    child: Text(s.autoDetect),
                   ),
                 ),
               ],
@@ -286,7 +279,7 @@ class _ShikoyatScreenState extends State<ShikoyatScreen> {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    'Sizning ma\'lumotlaringiz shaxsiylashtirilgan holda faqat tegishli tashkilotlarga yuboriladi. 24 soat ichida javob beramiz.',
+                    s.privacyNotice,
                     style: TextStyle(
                       fontSize: 13,
                       height: 1.45,
@@ -335,3 +328,4 @@ class _ShikoyatScreenState extends State<ShikoyatScreen> {
     );
   }
 }
+

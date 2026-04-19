@@ -6,6 +6,7 @@ from app.db.session import AsyncSessionLocal
 
 from app.ws.manager import manager
 from app.ws.schedule_manager import schedule_manager
+from app.ws.notification_manager import notification_manager
 
 router = APIRouter()
 
@@ -64,3 +65,17 @@ async def ws_jadval(
             await ws.receive_text()
     except WebSocketDisconnect:
         schedule_manager.disconnect(ws, key)
+
+
+@router.websocket("/ws/notifications")
+async def ws_notifications(
+    ws: WebSocket,
+    tuman_id: int = Query(...),
+    mahalla: str | None = Query(default=None),
+):
+    keys = await notification_manager.connect(ws, tuman_id, mahalla)
+    try:
+        while True:
+            await ws.receive_text()
+    except WebSocketDisconnect:
+        notification_manager.disconnect(ws, keys)

@@ -4,18 +4,6 @@ import 'package:http/http.dart' as http;
 import '../services/api_service.dart';
 
 class AuthService {
-  Map<String, dynamic> _demoLoginResponse({
-    required String username,
-    required String fullName,
-    required String tokenPrefix,
-  }) {
-    return {
-      'token': '${tokenPrefix}_demo_${DateTime.now().millisecondsSinceEpoch}',
-      'username': username,
-      'full_name': fullName,
-    };
-  }
-
   Map<String, dynamic> _demoDriverResponse({
     required String login,
     required String fullName,
@@ -29,72 +17,6 @@ class AuthService {
       'tuman_id': 6,
       'mahalla': "Bog'ishamol",
     };
-  }
-
-  Future<Map<String, dynamic>?> register({
-    required String username,
-    required String fullName,
-    required String password,
-  }) async {
-    try {
-      final res = await http
-          .post(
-            Uri.parse('${ApiConfig.baseUrl}/auth/register'),
-            headers: {'Content-Type': 'application/json'},
-            body: json.encode({
-              'username': username,
-              'full_name': fullName,
-              'password': password,
-            }),
-          )
-          .timeout(const Duration(seconds: 8));
-      if (res.statusCode == 200) {
-        return json.decode(res.body);
-      }
-      return _demoLoginResponse(
-        username: username,
-        fullName: fullName,
-        tokenPrefix: 'register',
-      );
-    } catch (_) {
-      return _demoLoginResponse(
-        username: username,
-        fullName: fullName,
-        tokenPrefix: 'register',
-      );
-    }
-  }
-
-  Future<Map<String, dynamic>?> login({
-    required String username,
-    required String password,
-  }) async {
-    try {
-      final res = await http
-          .post(
-            Uri.parse('${ApiConfig.baseUrl}/auth/login'),
-            headers: {'Content-Type': 'application/json'},
-            body: json.encode({
-              'username': username,
-              'password': password,
-            }),
-          )
-          .timeout(const Duration(seconds: 8));
-      if (res.statusCode == 200) {
-        return json.decode(res.body);
-      }
-      return _demoLoginResponse(
-        username: username,
-        fullName: 'Demo foydalanuvchi',
-        tokenPrefix: 'user',
-      );
-    } catch (_) {
-      return _demoLoginResponse(
-        username: username,
-        fullName: 'Demo foydalanuvchi',
-        tokenPrefix: 'user',
-      );
-    }
   }
 
   Future<Map<String, dynamic>?> driverLogin({
@@ -111,40 +33,50 @@ class AuthService {
               'password': password,
             }),
           )
-          .timeout(const Duration(seconds: 8));
+          .timeout(const Duration(seconds: 3));
       if (res.statusCode == 200) {
         return json.decode(res.body);
       }
-      return _demoDriverResponse(
-        login: login,
-        fullName: 'Haydovchi demo',
-      );
+      return ApiConfig.demoMode
+          ? _demoDriverResponse(
+              login: login,
+              fullName: 'Haydovchi demo',
+            )
+          : null;
     } catch (_) {
-      return _demoDriverResponse(
-        login: login,
-        fullName: 'Haydovchi demo',
-      );
+      return ApiConfig.demoMode
+          ? _demoDriverResponse(
+              login: login,
+              fullName: 'Haydovchi demo',
+            )
+          : null;
     }
   }
 
-  Future<void> saveToken(String token) async {
+  Future<void> saveResidentProfile({
+    required int tumanId,
+    required String tumanName,
+    required String mahalla,
+  }) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('auth_token', token);
+    await prefs.setInt('user_tuman_id', tumanId);
+    await prefs.setString('user_tuman_name', tumanName);
+    await prefs.setString('user_mahalla', mahalla);
   }
 
-  Future<String?> getToken() async {
+  Future<Map<String, dynamic>?> getResidentProfile() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('auth_token');
-  }
-
-  Future<void> saveUserProfile(String fullName) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('user_full_name', fullName);
-  }
-
-  Future<String?> getUserFullName() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('user_full_name');
+    final tumanId = prefs.getInt('user_tuman_id');
+    final tumanName = prefs.getString('user_tuman_name');
+    final mahalla = prefs.getString('user_mahalla');
+    if (tumanId == null || tumanName == null || mahalla == null) {
+      return null;
+    }
+    return {
+      'tuman_id': tumanId,
+      'tuman_name': tumanName,
+      'mahalla': mahalla,
+    };
   }
 
   Future<void> saveDriverToken(String token) async {
@@ -201,6 +133,8 @@ class AuthService {
 
   Future<void> logout() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.remove('auth_token');
+    await prefs.remove('user_tuman_id');
+    await prefs.remove('user_tuman_name');
+    await prefs.remove('user_mahalla');
   }
 }
